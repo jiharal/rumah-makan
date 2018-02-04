@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:background="?android:attr/detailsElementBackground">
+
+    <Button
+        android:id="@+id/btn_rec"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/btn_daftarrm"
+        android:layout_alignLeft="@+id/btn_daftarrm"
+        android:layout_alignStart="@+id/btn_daftarrm"
+
+        android:layout_marginLeft="57dp"
+        android:layout_marginStart="2dp"
+        android:text="Rec" />
+
+    <Button
+        android:id="@+id/btn_daftarrm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_logout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="13dp"
+        android:text="Tambah" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+
+        android:text="@string/log_out" />
+
+    <LinearLayout
+        android:id="@+id/atas"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <Spinner
+            android:id="@+id/filter"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+
+            android:gravity="center_vertical"
+            android:spinnerMode="dialog" />
+
+        <EditText
+            android:id="@+id/pencarian"
+            android:singleLine="true"
+            android:inputType="textFilter"
+            android:imeOptions="actionSearch"
+
+            android:drawableStart="@drawable/search"
+            android:hint="@string/search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.96" />
+
+
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/atas" />
+
+
+    <ListView
+        android:id="@+id/list_rm"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/map"
+        android:horizontalSpacing="3dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="3dp"></ListView>
+
+</RelativeLayout>

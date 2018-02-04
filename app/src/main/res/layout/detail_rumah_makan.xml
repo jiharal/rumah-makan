@@ -1,0 +1,155 @@
+
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="?android:attr/detailsElementBackground">
+
+    <fragment
+        android:id="@+id/map2"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="200dp"
+        android:layout_height="160dp"
+        android:layout_above="@+id/relativeLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/btnharga"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="daftar Menu"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/btnRute"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/maaap"
+        android:textColor="#ffffff" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/scrollView2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="0.98"
+        android:background="@drawable/border"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1"
+        tools:background="@color/common_google_signin_btn_text_light_disabled">
+
+        <TextView
+            android:id="@+id/deskripsi"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/gambar1"
+            android:padding="5dp" />
+
+        <ImageView
+            android:id="@+id/gambar1"
+            android:layout_width="200dp"
+            android:layout_height="129dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:layout_above="@+id/btnharga"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+
+            <TextView
+                android:id="@+id/lblAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/jam"
+                android:text="Alamat : " />
+
+            <TextView
+                android:id="@+id/alamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/lblAlamat"/>
+
+            <TextView
+                android:id="@+id/jam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/lblJam" />
+
+            <TextView
+                android:id="@+id/lblJam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="Jam Operasional : " />
+
+
+            <Button
+                android:id="@+id/btn_tambah"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:text="Lihat Komentar" />
+
+            <Button
+                android:id="@+id/btnvote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:text="Rate Rumahmakan"
+                android:textSize="12sp" />
+            <!--Button
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/btnRute"
+            android:id="@+id/btninfo"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Info"
+            android:background="@drawable/button"
+            /-->
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

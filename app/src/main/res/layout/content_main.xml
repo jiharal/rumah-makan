@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    tools:showIn="@layout/menu_utama">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/atas"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Spinner
+                android:id="@+id/filter"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+
+                android:gravity="center_vertical"
+                android:spinnerMode="dialog" />
+
+            <EditText
+                android:id="@+id/pencarian"
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+
+                android:layout_above="@+id/list_klinik"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/filter"
+                android:layout_weight="0.96"
+                android:drawableRight="@android:drawable/ic_menu_search"
+                android:hint="Search"
+                android:imeOptions="actionSearch"
+                android:inputType="textFilter"
+                android:singleLine="true" />
+
+
+
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentStart="true"
+             />
+
+
+            <ListView
+                android:id="@+id/list_klinik"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/filter"
+                android:horizontalSpacing="3dp"
+                android:numColumns="2"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="3dp"></ListView>
+        </RelativeLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

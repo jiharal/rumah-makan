@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RumahMakan</string>
+    <string name="log_out">Log Out</string>
+    <string name="search">Search</string>
+    <style name="styleRatingBar" parent="@android:style/Widget.RatingBar">
+
+        <item name="android:minHeight">22dip</item>
+        <item name="android:maxHeight">22dip</item>
+    </style>
+</resources>
