@@ -19,13 +19,5 @@ public class ClassItem {
         super();
         this.icon = icon;
         this.label = label;
-     //   this.rating = rating;
     }
-//    public float getRatingStar() {
-//        return ratingStar;
-//    }
-//    public void setRatingStar(float ratingStar) {
-//        this.ratingStar = ratingStar;
-//    }
-
 }

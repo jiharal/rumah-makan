@@ -33,13 +33,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.a5days.rumahmakan.adapter.ListImageAdapter;
+import com.example.a5days.rumahmakan.app.AppController;
 import com.example.a5days.rumahmakan.vote.RatingActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,6 +59,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.ui.IconGenerator;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import android.net.ConnectivityManager;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -71,6 +80,7 @@ import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -86,6 +96,10 @@ import static com.example.a5days.rumahmakan.MainActivity.TAG_USERNAME;
 public class Menu_Utama extends AppCompatActivity  implements LocationListener, OnMapReadyCallback {
 
 
+    ConnectivityManager conMgr;
+    ProgressDialog pDialog;
+    String url = "http://iddota.hol.es/rm/android/method.php";
+    private static final String TAG = Register.class.getSimpleName();
 
     //public static String ipServer = "192.168.100.7";
     private GoogleMap map;
@@ -152,6 +166,7 @@ public class Menu_Utama extends AppCompatActivity  implements LocationListener, 
     public static final String session_status = "session_status";
 
     SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,20 +176,11 @@ public class Menu_Utama extends AppCompatActivity  implements LocationListener, 
         fm.getMapAsync(this);
 
 
-
-
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
         id = sharedpreferences.getString(TAG_ID, null);
         username = sharedpreferences.getString(TAG_USERNAME, null);
 
-//        if (session) {
-//           Intent intent = new Intent(Menu_Utama.this, DetailRumahMakan.class);
-//            intent.putExtra(TAG_ID, id);
-//            intent.putExtra(TAG_USERNAME, username);
-//            finish();
-//            startActivity(intent);
-//        }
         btnrec = (Button) findViewById(R.id.btn_rec);
         btn_logout = (Button) findViewById(R.id.btn_logout);
         btn_daftarrm = (Button) findViewById(R.id.btn_daftarrm);
@@ -198,6 +204,16 @@ public class Menu_Utama extends AppCompatActivity  implements LocationListener, 
         gagal.setCancelable(false);
         gagal.setCanceledOnTouchOutside(false);
         btnCoba = (Button) findViewById(R.id.btnCoba);
+
+
+        conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE); {
+            if (conMgr.getActiveNetworkInfo() != null
+                    && conMgr.getActiveNetworkInfo().isAvailable()
+                    && conMgr.getActiveNetworkInfo().isConnected()) {
+            }else{
+                Toast.makeText(getApplicationContext(), "No Internet Connetion", Toast.LENGTH_SHORT).show();
+            }
+        }
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
 
@@ -229,31 +245,25 @@ public class Menu_Utama extends AppCompatActivity  implements LocationListener, 
 
             }
         });
+
+
         btnrec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                // update login session ke FALSE dan mengosongkan nilai id dan username
-                //String id_user =  getIntent().getStringExtra(id);
-//                Intent intent = new Intent(Menu_Utama.this, Activity_Rec.class);
-//                finish();
-//                startActivity(intent);
-
-                try {
-                    Menu_Utama.id = id;
+                String iduser = id.toString();
+                if (conMgr.getActiveNetworkInfo() != null
+                        && conMgr.getActiveNetworkInfo().isAvailable()
+                        && conMgr.getActiveNetworkInfo().isConnected()) {
+//                    sendIdToServer(iduser);
                     Intent intent = new Intent(Menu_Utama.this, Activity_Rec.class);
                     finish();
                     startActivity(intent);
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                }else  {
+                    Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });
-
-
 
         pencarian.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -804,13 +814,5 @@ public class Menu_Utama extends AppCompatActivity  implements LocationListener, 
 
         }
     }
-
-
-
-
-    // Show All Content
-
-
-
 
 }

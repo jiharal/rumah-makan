@@ -281,17 +281,8 @@ public EditText tambahkomentar;
                                     String tampilJarak = df.format(jarakObj[i]);
 
                                     map.addMarker(new MarkerOptions().position(
-                                            //new LatLng(latitudeObjek[i], longitudeObjek[i])).snippet(tampilJarak+" km").title(namaStudio[i])).setTag(idStudio[i]);
-                                            new LatLng(latitudeObjek[i], longitudeObjek[i])).icon(BitmapDescriptorFactory.fromBitmap(icon))).setTag(Menu_Utama.idRM[i]);
-                                    //marker.setTag(idStudio[i]);
 
-                                    /*
-                                    Marker marker = new Marker();
-                                    marker.setTitle(namaStudio[i]);
-                                    marker.setPosition(new LatLng(latitudeObjek[i], longitudeObjek[i]));
-                                    marker.setTag(idStudio[i]);
-                                    map.addMarker(new MarkerOptions(marker));
-                                    */
+                                            new LatLng(latitudeObjek[i], longitudeObjek[i])).icon(BitmapDescriptorFactory.fromBitmap(icon))).setTag(Menu_Utama.idRM[i]);
                                 }
                                 map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                                     @Override
